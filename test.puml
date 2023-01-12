@@ -1,0 +1,32 @@
+@startuml
+class banking.DataBase {
+- SQLiteDataSource dataSource
+- int count
++ <<Create>> DataBase(String)
++ void createCard()
++ void addInCome(Card,int)
++ void closeAccount(Card)
++ Connection getConnection()
++ void transaction(Card,String)
++ void addCash(Connection,String,int)
++ void takeCash(Connection,String,int)
++ void updateBalance(Connection,String,int,String)
+}
+class banking.Card {
+- String number
+- String pin
+- int balance
+- boolean log
++ <<Create>> Card()
++ <<Create>> Card(Connection,String,String)
++ String getNumber()
++ String getPin()
++ int getBalance()
++ void setBalance(int)
++ boolean isLog()
++ {static} int luhnAlgorithm(String)
+- String generatePin()
+- String generateNumber()
++ String toString()
+}
+@enduml
